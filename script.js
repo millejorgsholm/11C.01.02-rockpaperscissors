@@ -1,3 +1,9 @@
+let playerChoice;
+let computerChoice;
+let computerRandom;
+let players = document.querySelectorAll(".player");
+let btns = document.querySelectorAll("button");
+
 start();
 function start() {
   console.log("Game started");
