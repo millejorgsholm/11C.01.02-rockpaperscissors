@@ -117,6 +117,11 @@ function determineWinner() {
     showWin();
   } else if (
     document.getElementById("player1").classList.contains("paper") &&
+    document.getElementById("player2").classList.contains("rock")
+  ) {
+    showWin();
+  } else if (
+    document.getElementById("player1").classList.contains("paper") &&
     document.getElementById("player2").classList.contains("paper")
   ) {
     showDraw();
@@ -125,16 +130,6 @@ function determineWinner() {
     document.getElementById("player2").classList.contains("scissors")
   ) {
     showLost();
-  } else if (
-    document.getElementById("player1").classList.contains("paper") &&
-    document.getElementById("player2").classList.contains("rock")
-  ) {
-    showWin();
-  } else if (
-    document.getElementById("player1").classList.contains("scissors") &&
-    document.getElementById("player2").classList.contains("scissors")
-  ) {
-    showDraw();
   } else if (
     document.getElementById("player1").classList.contains("scissors") &&
     document.getElementById("player2").classList.contains("rock")
@@ -145,6 +140,11 @@ function determineWinner() {
     document.getElementById("player2").classList.contains("paper")
   ) {
     showWin();
+  } else if (
+    document.getElementById("player1").classList.contains("scissors") &&
+    document.getElementById("player2").classList.contains("scissors")
+  ) {
+    showDraw();
   }
 }
 

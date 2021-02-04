@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #444059;
+  background-color: #ffd7f6;
   font-family: "Luckiest Guy", cursive;
   color: #eee;
 }
@@ -8,6 +8,8 @@ body {
 h1 {
   text-align: center;
   font-size: 8vw;
+  color: rgb(255, 255, 255);
+  text-shadow: 5px -5px 0 rgb(0, 0, 0);
 }
 
 #gamefield {
