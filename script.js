@@ -1,45 +1,31 @@
-let playerChoice;
-let computerChoice;
-let computerRandom;
-let players = document.querySelectorAll(".player");
-let btns = document.querySelectorAll("button");
-
 start();
 function start() {
   console.log("Game started");
-  playersChoice();
+  getUserSelection();
 }
 
-//Hvordan laves dette? addEventListeners?
-function playersChoice() {
-  console.log("Players choice");
-  rememberPlayerChoice();
+//addEventListernes to all 3 buttons so that the user are able to click them
+function getUserSelection() {
+  console.log(getUserSelection);
+
+  document.querySelector(".rock").addEventListener("click", playerChoice);
+  document.querySelector(".paper").addEventListener("click", playerChoice);
+  document.querySelector(".scissors").addEventListener("click", playerChoice);
 }
 
-//Hvordan husker den dette?
-function rememberPlayerChoice() {
-  makeRandomComputerChoice();
+function playerChoice() {
+  document.querySelector("#win").classList.add("hidden");
+  document.querySelector("#lose").classList.add("hidden");
+  document.querySelector("#draw").classList.add("hidden");
+  myRandom = Math.floor(Math.random() * 3 + 1);
+  console.log(myRandom);
+
+  //Make the hands shake - CSS animation
+  document.querySelector("#player1").classList.add("shake");
+  document.querySelector("#player2").classList.add("shake");
 }
 
-//Math randon
-function makeRandomComputerChoice() {
-  console.log("Making random computer choice");
-  rememberComputerChoice();
-}
-
-//Hvordan husker den dette?
-function rememberComputerChoice() {
-  showAnimations();
-}
-
-//CSS animationer
-
-function showAnimations() {
-  console.log("Show animations");
-  determineWinner();
-}
-
-//Brug if-else til at afgøre, hvorvidt spiller har vundet/tabt/uafgjort
+function computerChoice() {}
 
 function determineWinner() {
   console.log("Determine winner");
