@@ -34,3 +34,7 @@ function showWin() {
 function showLose() {
   console.log("Show lose!");
 }
+
+function showDraw() {
+  console.log("Show draw!");
+}
