@@ -1,6 +1,7 @@
+start();
 function start() {
   console.log("Game started");
-  getUserSelection();
+  playersChoice();
 }
 
 //Hvordan laves dette? addEventListeners?
