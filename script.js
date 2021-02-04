@@ -3,13 +3,21 @@ function start() {
   getUserSelection();
 }
 
-function getUserSelection() {
-  console.log("Get user selection");
+function playersChoice() {
+  console.log("Players choice");
+  rememberPlayerChoice();
+}
+
+function rememberPlayerChoice() {
   makeRandomComputerChoice();
 }
 
 function makeRandomComputerChoice() {
   console.log("Making random computer choice");
+  rememberComputerChoice();
+}
+
+function rememberComputerChoice() {
   showAnimations();
 }
 
@@ -25,16 +33,29 @@ function determineWinner() {
 
   //if player won
   showWin();
+
+  //if player lose
+  showLose();
+
+  // if draw
+  showDraw();
 }
 
 function showWin() {
   console.log("Show win!");
+  showResult();
 }
 
 function showLose() {
   console.log("Show lose!");
+  showResult();
 }
 
 function showDraw() {
   console.log("Show draw!");
+  showResult();
+}
+
+function showResult() {
+  console.log("Show result");
 }
