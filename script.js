@@ -1,6 +1,6 @@
-start();
+window.addEventListener("load", start);
 function start() {
-  console.log("Game started");
+  console.log(start);
   getUserSelection();
 }
 
@@ -8,57 +8,160 @@ function start() {
 function getUserSelection() {
   console.log(getUserSelection);
 
-  document.querySelector(".rock").addEventListener("click", playerChoice);
-  document.querySelector(".paper").addEventListener("click", playerChoice);
-  document.querySelector(".scissors").addEventListener("click", playerChoice);
+  document.querySelector(".rock").addEventListener("click", playersChoice);
+  document.querySelector(".paper").addEventListener("click", playersChoice);
+  document.querySelector(".scissors").addEventListener("click", playersChoice);
 }
 
-function playerChoice() {
+//Show players choice
+function playersChoice() {
   document.querySelector("#win").classList.add("hidden");
   document.querySelector("#lose").classList.add("hidden");
   document.querySelector("#draw").classList.add("hidden");
+
+  //Making a random number between 1 and 3
   myRandom = Math.floor(Math.random() * 3 + 1);
   console.log(myRandom);
 
-  //Make the hands shake - CSS animation
+  //Make them shake
   document.querySelector("#player1").classList.add("shake");
   document.querySelector("#player2").classList.add("shake");
+
+  //If the player chooses rock
+  if (this.classList.contains("rock")) {
+    document
+      .querySelector("#player1")
+      .addEventListener("animationend", function () {
+        document.querySelector("#player1").classList.remove("shake");
+        document.querySelector("#player1").classList.remove("paper");
+        document.querySelector("#player1").classList.remove("scissors");
+        document.querySelector("#player1").classList.remove("rock");
+        document.querySelector("#player1").classList.add("rock");
+      });
+  } else if (this.classList.contains("paper")) {
+    document
+      .querySelector("#player1")
+      .addEventListener("animationend", function () {
+        document.querySelector("#player1").classList.remove("shake");
+        document.querySelector("#player1").classList.remove("paper");
+        document.querySelector("#player1").classList.remove("scissors");
+        document.querySelector("#player1").classList.remove("rock");
+        document.querySelector("#player1").classList.add("paper");
+      });
+  } else if (this.classList.contains("scissors")) {
+    document
+      .querySelector("#player1")
+      .addEventListener("animationend", function () {
+        document.querySelector("#player1").classList.remove("shake");
+        document.querySelector("#player1").classList.remove("paper");
+        document.querySelector("#player1").classList.remove("scissors");
+        document.querySelector("#player1").classList.remove("rock");
+        document.querySelector("#player1").classList.add("scissors");
+      });
+  }
+  computersChoice(myRandom);
 }
 
-function computerChoice() {}
+//Define computers choice --> random number from 1 to 3 --> 1 is rock, 2 is paper and 3 is scissors
+function computersChoice() {
+  if (myRandom == "1") {
+    document
+      .querySelector("#player2")
+      .addEventListener("animationend", function () {
+        document.querySelector("#player2").classList.remove("shake");
+        document.querySelector("#player2").classList.remove("paper");
+        document.querySelector("#player2").classList.remove("scissors");
+        document.querySelector("#player2").classList.remove("rock");
+        document.querySelector("#player2").classList.add("rock");
+      });
+  } else if (myRandom == "2") {
+    document
+      .querySelector("#player2")
+      .addEventListener("animationend", function () {
+        document.querySelector("#player2").classList.remove("shake");
+        document.querySelector("#player2").classList.remove("paper");
+        document.querySelector("#player2").classList.remove("scissors");
+        document.querySelector("#player2").classList.remove("rock");
+        document.querySelector("#player2").classList.add("paper");
+      });
+  }
+  if (myRandom == "3") {
+    document
+      .querySelector("#player2")
+      .addEventListener("animationend", function () {
+        document.querySelector("#player2").classList.remove("shake");
+        document.querySelector("#player2").classList.remove("paper");
+        document.querySelector("#player2").classList.remove("scissors");
+        document.querySelector("#player2").classList.remove("rock");
+        document.querySelector("#player2").classList.add("scissors");
+      });
+  }
+}
 
+//Define whether a game is won, lost or draw
 function determineWinner() {
-  console.log("Determine winner");
-  //Faked so player always win
-  winner = "computer";
-
-  //if player won
-  showWin();
-
-  //if player lose
-  showLose();
-
-  // if draw
-  showDraw();
+  if (
+    document.getElementById("player1").classList.contains("rock") &&
+    document.getElementById("player2").classList.contains("rock")
+  ) {
+    showDraw();
+  } else if (
+    document.getElementById("player1").classList.contains("rock") &&
+    document.getElementById("player2").classList.contains("paper")
+  ) {
+    showLost();
+  } else if (
+    document.getElementById("player1").classList.contains("rock") &&
+    document.getElementById("player2").classList.contains("scissors")
+  ) {
+    showWin();
+  } else if (
+    document.getElementById("player1").classList.contains("paper") &&
+    document.getElementById("player2").classList.contains("paper")
+  ) {
+    showDraw();
+  } else if (
+    document.getElementById("player1").classList.contains("paper") &&
+    document.getElementById("player2").classList.contains("scissors")
+  ) {
+    showLost();
+  } else if (
+    document.getElementById("player1").classList.contains("paper") &&
+    document.getElementById("player2").classList.contains("rock")
+  ) {
+    showWin();
+  } else if (
+    document.getElementById("player1").classList.contains("scissors") &&
+    document.getElementById("player2").classList.contains("scissors")
+  ) {
+    showDraw();
+  } else if (
+    document.getElementById("player1").classList.contains("scissors") &&
+    document.getElementById("player2").classList.contains("rock")
+  ) {
+    showLost();
+  } else if (
+    document.getElementById("player1").classList.contains("scissors") &&
+    document.getElementById("player2").classList.contains("paper")
+  ) {
+    showWin();
+  }
 }
 
-//Tilføj og fjern hide-funktioner alt efter om spilleren har vundet/tabt eller uafgjort
-
+//If the player wins
 function showWin() {
-  console.log("Show win!");
-  showResult();
+  console.log("You won!");
+  document.querySelector("#win").classList.remove("hidden");
 }
 
-function showLose() {
-  console.log("Show lose!");
-  showResult();
+//If the player lose
+function showLost() {
+  console.log("You lost!");
+  document.querySelector("#lose").classList.remove("hidden");
 }
 
+//If it's draw
 function showDraw() {
-  console.log("Show draw!");
-  showResult();
-}
-
-function showResult() {
-  console.log("Show result");
+  console.log("It's draw");
+  document.querySelector("#draw").classList.remove("hidden");
 }
